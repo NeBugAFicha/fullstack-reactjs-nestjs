@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { useState } from "react";
 import { registration } from "../../actions/auth";
 import Input from "../../utils/input/Input";
-import "./authorization.css";
+import "./autorizationCSS/authorization.css";
 const Registration = () => {
   const [regForm, setRegForm] = useState({
     email: "",

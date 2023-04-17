@@ -18,6 +18,7 @@ export class AuthGuard implements CanActivate {
         request.headers.authorization.split(' ')[1],
         process.env.JWT_SECRET_KEY,
       );
+
       if (!userData) {
         throw new DOMException();
       }

@@ -1,13 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import {
-  HydratedDocument,
-  Schema as SchemaMongo,
-  SchemaTypes,
-  Types,
-} from 'mongoose';
+import { Types } from 'mongoose';
 import { User } from './users.schema';
-
-export type FileDocument = HydratedDocument<File>;
 
 @Schema()
 export class File {
@@ -26,13 +19,16 @@ export class File {
   @Prop({ default: '' })
   path: string;
 
-  @Prop({ type: { type: SchemaTypes.ObjectId, ref: User.name } })
-  user: Types.ObjectId;
+  @Prop({default: Date.now()} )
+  date: Date;
+  
+  @Prop({ type: Types.ObjectId, ref: 'User' })
+  user: User;
 
-  @Prop({ type: { type: SchemaMongo.Types.ObjectId, ref: 'File' } })
+  @Prop({ type: Types.ObjectId, ref: 'File' })
   parent: File;
 
-  @Prop({ type: [{ type: SchemaMongo.Types.ObjectId, ref: 'File' }] })
+  @Prop({type: [{ type: Types.ObjectId, ref: 'File' }]})
   childs: File[];
 }
 

@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { useState } from "react";
 import { login } from "../../actions/auth";
 import Input from "../../utils/input/Input";
-import "./authorization.css";
+import "./autorizationCSS/authorization.css";
 import { useDispatch } from "react-redux";
 const Login = () => {
   const [logForm, setLogForm] = useState({

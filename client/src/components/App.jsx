@@ -1,11 +1,12 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { auth } from "../actions/auth";
-import "./app.css";
+import "./appCSS/app.css";
 import Login from "./authorization/Login";
 import Registration from "./authorization/Registration";
+import Disk from './disk/Disk';
 import Navbar from "./navbar/Navbar";
 const App = () => {
   const isAuth = useSelector((state) => state.user.isAuth);
@@ -15,12 +16,13 @@ const App = () => {
       dispatch(auth());
     }
   }, []);
+
   return (
     <BrowserRouter>
       <div className="app">
         <Navbar />
         <div className="wrap">
-          {!isAuth && (
+          {!isAuth ? (
             <Routes>
               <Route
                 key={"/registration"}
@@ -28,6 +30,18 @@ const App = () => {
                 path={"/registration"}
               />
               <Route key={"/login"} element={<Login />} path={"/login"} />
+              <Route key={"*"} element={<Navigate to='/login' />} path={"*"} />
+            </Routes>
+          ): 
+          (
+            <Routes>
+              <Route
+                exact
+                key={"/"}
+                element={<Disk />}
+                path={"/"}
+              />
+              <Route key={"*"} element={<Navigate to='/' />} path={"*"} />
             </Routes>
           )}
         </div>

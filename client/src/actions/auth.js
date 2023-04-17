@@ -7,7 +7,7 @@ export const registration = async (form) => {
       "http://localhost:8000/api/auth/registration",
       form
     );
-    console.log(data);
+
   } catch (e) {
     console.log(e.response.data);
   }

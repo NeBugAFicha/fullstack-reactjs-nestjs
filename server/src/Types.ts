@@ -31,14 +31,15 @@ export interface Response<T> {
 
 // export type RouteRequest<T extends RouteInterface> = ExtendedRequest<T['param'], T['body'], T['query']>;
 
-export type ControllerMethods<T extends GenericRoute> = {
-  [key in keyof T]: (
-    current_user_id: number,
-    param: T[key]['param'],
-    body: T[key]['body'],
-    query: T[key]['query'],
-  ) => Promise<void | GenericObject>;
-};
+// export type ControllerMethods<T extends GenericRoute> = {
+//   [key in keyof T]: (
+//     current_user_id: string,
+//     param?: T[key]['param'],
+//     body?: T[key]['body'],
+//     query?: T[key]['query'],
+//     file?: Express.Multer.File,
+//   ) => Promise<void | GenericObject>;
+// };
 
 // current_user_id?: number,
 // param?: T[key]['param'],

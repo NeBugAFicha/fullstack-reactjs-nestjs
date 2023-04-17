@@ -12,6 +12,7 @@ export class JoiValidationPipe implements PipeTransform {
   constructor(private schema: RouteInterface<ObjectSchema>) {}
 
   transform(routeParam: GenericObject, { type }: ArgumentMetadata) {
+    if (!['param', 'query', 'body'].includes(type)) return routeParam;
     const { error, value } = this.schema[type].validate(routeParam);
     if (error) {
       throw new BadRequestException(

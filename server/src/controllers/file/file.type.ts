@@ -6,4 +6,15 @@ export type Type = {
       parent?: string;
     };
   };
+  getFiles: {
+    query: {
+      parent?: string;
+    };
+  };
+  saveFile: {
+    body: {
+      parent?: string;
+      // file: File;
+    };
+  };
 };
